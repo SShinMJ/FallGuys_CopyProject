@@ -1,61 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.VersionControl.Asset;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterController
 {
-    [SerializeField] float playerSpeed = 5f;
-    [SerializeField] float gravity = -20f;
-
-    // 점프 힘
-    [SerializeField] float jumpForce = 5f;
-    // 점프 상태 변수
-    bool isJumping = false;
-
-    // 모델링 오브젝트의 애니메이터
-    Animator animator;
-
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    // 수직, 수평 입력 프로퍼티
+    public float horizontal => Input.GetAxis("Horizontal");
+    public float vertical => Input.GetAxis("Vertical");
+    // MOVE 상태에만 움직이게 해야하므로 관련 프로퍼티.
+    public bool isMoveable { get; set; }
+    public Vector3 move { get; set; }
+    [SerializeField] private float _moveSpeed = 1.5f;
 
     void Update()
     {
-        // 입력 받기
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        if (isGrounded)
+        {
+            animator.SetInteger("state", 0);
+            isMoveable = true;
 
+            Debug.Log(animator.GetInteger("state") + " " + animator.GetBool("isDirty") + " " + isMoveable);
+        }
 
-        //// 점프가 끝났다면(캐릭터가 바닥에 닿아 있다면)
-        //if (isJumping)
-        //{
-        //    isJumping = false;
-        //}
+        // 점프키(Space)를 누르면 상태값이 바뀐다.
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //animator.Get.ChangeState(2);
+        }
 
-        //// 바닥에 닿아있을 경우엔, 수직 속도를 받지 않으므로
-        //if ()
-        //{
-        //    // 수직 속도 초기화
-        //    yVelocity = 0;
-        //}
+        // 움직일 수 있을 때(점프나, 떨어지는 상태가 아닐때)
+        if (isMoveable && move != new Vector3(horizontal, 0, vertical))
+        {
+            move = new Vector3(horizontal, 0, vertical);
+        }
+    }
 
-        //// 스페이스바(점프) 입력 시 점프 상태가 아니라면
-        //if (Input.GetButtonDown("Jump") && !isJumping) // == Input.GetKeyDown(KeyCode.Space)
-        //{
-        //    yVelocity = jumpForce;
-        //    isJumping = true;
-        //}
+    private void FixedUpdate()
+    { 
+        // 움직이는 것도 rigidbody.position이 변경되므로 FixedUpdate에 작성되야 한다.
+        Move();
+    }
 
-        // 이동 방향 설정
-        // 절대(월드) 좌표 방식(오브젝트 축(회전방향)과 관계 없이 움직인다)
-        Vector3 dir = new Vector3(h, 0, v);
-        // 상대(로컬) 좌표 방식 => 카메라의 축으로 설정
-        dir = Camera.main.transform.TransformDirection(dir);
-
-        // 1) 이동 속도로 플레이어 이동
-        //transform.position += dir * speed * Time.deltaTime;
-        // 2) 캐릭터 컨트롤러로 플레이어 이동
-        transform.position += dir * playerSpeed * Time.deltaTime;
+    void Move()
+    {
+        _rigidbody.position += move * _moveSpeed * Time.fixedDeltaTime;
     }
 }
