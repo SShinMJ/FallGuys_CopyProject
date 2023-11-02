@@ -1,35 +1,30 @@
-namespace FSM
+using UnityEditor;
+using UnityEngine;
+
+public class Fall : StateBase
 {
-    public class Fall : StateBase
+    [SerializeField] private float _landingDistance;
+    private float _startPosY;
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        public Fall(int id, StateMachine machine) : base(id, machine)
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+        _startPosY = transform.position.y;
+    }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+
+        if (controller.isGrounded)
         {
-            
-        }
+            ChangeState(animator, State.Move);
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            controller.isMoveable = false;
-            animator.Play("Fall");
-        }
-
-        public override int OnUpdate()
-        {
-            int next =  base.OnUpdate();
-
-            //FixedUpdate가 먼저 실행되지 않아 에러인 -1이 넘어왔다면
-            if (next < 0)
-                return id;
-
-            // 땅에 닿았다면
-            if (controller.isGrounded)
-            {
-                // 상태 변환
-                next = MOVE;
-            }
-
-            return next;
+            // _landingDistance 미만의 거리로 착지하면 다시 Move로,
+            // 초과하여 낙하중이면 바닥에 닿을때 넘어지는 모션이 보여질 수 있게 한다.
+            //if (_startPosY - transform.position.y < _landingDistance)
+            //    ChangeState(animator, State.Move);
+            //else
+            //    ChangeState(animator, State.Land);
         }
     }
 }

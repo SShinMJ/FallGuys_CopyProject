@@ -1,9 +1,10 @@
-
-    public enum State
-    {
-        Idle,
-        Move,
-        Jump,
-        Slide,
-        Fall,
-    }
+public enum State
+{
+    None,
+    Move,
+    Jump,
+    Slide,
+    Grab,
+    Fall,
+    //Land
+}
