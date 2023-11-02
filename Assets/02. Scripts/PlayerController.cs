@@ -10,7 +10,7 @@ public class PlayerController : CharacterController
 
     // 2초 이상 'W'키를 누를 시 달리기 시작한다.
     float currentTime;
-    float limitTime = 2.0f;
+    float limitTime = 1.0f;
     float limitValue = 3.0f;
     float moveValue = 1.0f;
 
@@ -35,14 +35,17 @@ public class PlayerController : CharacterController
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
+            // 자연스럽게 돌아올 수 있게 값 조절하는 부분 추가 필요~!
             moveValue = 1.0f;
             currentTime = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("점프 키!");
             if (isGrounded)
             {
+                Debug.Log("뛸 수 있음!");
                 ChangeState(State.Jump);
             }
         }

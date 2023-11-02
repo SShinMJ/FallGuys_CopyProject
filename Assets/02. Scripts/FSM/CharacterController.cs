@@ -70,7 +70,6 @@ public abstract class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(moveGain);
         if (isMovable)
         {
             move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
@@ -128,6 +127,7 @@ public abstract class CharacterController : MonoBehaviour
     // 애니메이션 상태 변환
     public void ChangeState(State newState)
     {
+        Debug.Log("ChangeState");
         _animator.SetInteger("state", (int)newState);
         next = newState;
         int layerIndex = 0;
@@ -138,6 +138,7 @@ public abstract class CharacterController : MonoBehaviour
 
             if ((layer & stateLayerMaskData.animatorLayerPairs[newState]) > 0)
             {
+                Debug.Log($"dirty{layer}");
                 // 상태값이 바뀌어야 한다면 바뀌는 동안 다른 애니메이션이 실행되지 않게
                 // dirty 값 변경.
                 if (states[layerIndex] != newState)
