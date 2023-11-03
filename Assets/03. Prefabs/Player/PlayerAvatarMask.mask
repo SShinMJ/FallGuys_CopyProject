@@ -7,5 +7,112 @@ AvatarMask:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerAvatarMask
-  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
-  m_Elements: []
+  m_Mask: 00000000000000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Character
+    m_Weight: 0
+  - m_Path: Character/GEO
+    m_Weight: 0
+  - m_Path: Character/GEO/Body
+    m_Weight: 0
+  - m_Path: Character/LeftPoleTarget
+    m_Weight: 0
+  - m_Path: Character/RightRoleTarget
+    m_Weight: 0
+  - m_Path: Character/SKELETON
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Carry
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01/Eye_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01/Eye_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Head_C_jnt01/Head_C_nub
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02/More_Infected_VFX
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02/More_Infected_VFX/Symbols
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02/More_Infected_VFX/waistRing
+      (1)
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02/SmokeLocal
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Prefab_VFX_Infected_V02/SmokeTrailing
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Finger01_L_jnt_01
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Finger01_L_jnt_01/Finger01_L_jnt_02
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Finger02_L_jnt_01
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Finger02_L_jnt_01/Finger02_L_jnt_02
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Thumb_L_jnt_01
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_L_jnt/Elbow_L_jnt/Wrist_L_jnt/Thumb_L_jnt_01/Thumb_L_jnt_02
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Finger01_R_jnt_03
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Finger01_R_jnt_03/Finger01_R_jnt_04
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Finger02_R_jnt_03
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Finger02_R_jnt_03/Finger02_R_jnt_04
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Thumb_R_jnt_03
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Chest_C_jnt/Shoulder_R_jnt1/Elbow_R_jnt1/Wrist_R_jnt1/Thumb_R_jnt_03/Thumb_R_jnt_04
+    m_Weight: 1
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/PB_TailTag
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/PB_TailTag/PRP_TagTail_MO
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_L_jnt/Knee_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_L_jnt/Knee_L_jnt/Ankle_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_L_jnt/Knee_L_jnt/Ankle_L_jnt/Ball_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_L_jnt/Knee_L_jnt/Ankle_L_jnt/Ball_L_jnt/Toe_L_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_R_jnt/Knee_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_R_jnt/Knee_R_jnt/Ankle_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_R_jnt/Knee_R_jnt/Ankle_R_jnt/Ball_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Pelvis_C_jnt/Hip_R_jnt/Knee_R_jnt/Ankle_R_jnt/Ball_R_jnt/Toe_R_jnt
+    m_Weight: 0
+  - m_Path: Character/SKELETON/Root/Torso_C_jnt_NoStrechSquash/Torso_C_jnt
+    m_Weight: 0

@@ -4,7 +4,7 @@ public enum State
     Move,
     Jump,
     Slide,
-    Grab,
     Fall,
+    Grab,
     //Land
 }

@@ -8,7 +8,6 @@ public class Jump : StateBase
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("뛰는게 보여야함!");
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
         // 프로퍼티기 때문에 y값만 수정할 수 없다.
@@ -29,7 +28,6 @@ public class Jump : StateBase
 
         if (rigidbody.velocity.y <= 0)
         {
-            Debug.Log("애니메이션 실행중!");
             ChangeState(animator, State.Fall);
         }
     }

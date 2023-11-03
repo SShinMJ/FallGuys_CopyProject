@@ -42,10 +42,8 @@ public class PlayerController : CharacterController
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("점프 키!");
             if (isGrounded)
             {
-                Debug.Log("뛸 수 있음!");
                 ChangeState(State.Jump);
             }
         }
@@ -55,11 +53,26 @@ public class PlayerController : CharacterController
             ChangeState(State.Slide);
         }
 
+        if (Input.GetMouseButton(1))
+        {
+            if (isGrounded)
+            {
+                moveValue = 2f;
+                ChangeState(State.Grab);
+            }
+        }
         if (Input.GetMouseButtonDown(1))
         {
             if (isGrounded)
             {
-                ChangeState(State.Grab);
+                moveValue = 2f;
+            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            if (isGrounded)
+            {
+                ChangeState(State.Move);
             }
         }
     }

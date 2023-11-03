@@ -19,12 +19,8 @@ public abstract class CharacterController : MonoBehaviour
         get
         {
             if (states[0] != State.Move)
-                return false;
-
-            for (int i = 1; i < states.Length; i++)
             {
-                if (states[i] != State.None)
-                    return false;
+                return false;
             }
 
             return true;
@@ -35,13 +31,7 @@ public abstract class CharacterController : MonoBehaviour
     public State next;
     private Animator _animator;
     public StateLayerMaskData stateLayerMaskData;
-    public bool isGrounded
-    {
-        get
-        {
-            return DetectGround();
-        }
-    }
+    public bool isGrounded => DetectGround();
 
     [SerializeField] private float _groundDetectRadius;
     private Vector3 _inertia;  // 관성
@@ -82,13 +72,22 @@ public abstract class CharacterController : MonoBehaviour
     {
         // 땅에 닿았는 지 여부에 따른 관성
         if (DetectGround())
+        {
             _inertia.y = 0.0f;
+        }
         else
+        {
             _inertia.y += Physics.gravity.y * Time.fixedDeltaTime;
+        }
 
         // 관성 값이 생기면 위치를 변화시킨다.
         if (_inertia.magnitude > 0.0f)
             transform.Translate(_inertia * Time.fixedDeltaTime);
+
+        // 카메라 방향으로 이동 방향 설정
+        var offset = Camera.main.transform.forward;
+        offset.y = 0;
+        transform.LookAt(transform.position + offset);
 
         // 이동
         Vector3 expected = transform.position
@@ -127,7 +126,6 @@ public abstract class CharacterController : MonoBehaviour
     // 애니메이션 상태 변환
     public void ChangeState(State newState)
     {
-        Debug.Log("ChangeState");
         _animator.SetInteger("state", (int)newState);
         next = newState;
         int layerIndex = 0;
@@ -138,7 +136,6 @@ public abstract class CharacterController : MonoBehaviour
 
             if ((layer & stateLayerMaskData.animatorLayerPairs[newState]) > 0)
             {
-                Debug.Log($"dirty{layer}");
                 // 상태값이 바뀌어야 한다면 바뀌는 동안 다른 애니메이션이 실행되지 않게
                 // dirty 값 변경.
                 if (states[layerIndex] != newState)
