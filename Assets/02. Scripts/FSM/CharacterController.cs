@@ -93,6 +93,7 @@ public abstract class CharacterController : MonoBehaviour
         Vector3 expected = transform.position
                            + Quaternion.LookRotation(transform.forward, Vector3.up) * move * _moveSpeed * Time.fixedDeltaTime;
 
+        Debug.Log(transform.position + " > " + expected);
         transform.position = expected;
     }
 

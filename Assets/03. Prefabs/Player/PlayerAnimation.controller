@@ -149,7 +149,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dive_Loop
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6262871295927281890}
@@ -162,7 +162,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6398137216411210838, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+  m_Motion: {fileID: 7400000, guid: 15cbc17dcc97e2d459fe967e1a712f8b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -340,7 +340,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -7247767113115313907, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+  m_Motion: {fileID: 7400000, guid: 4c882df4309272d469da16a680fead80, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -726,7 +726,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1494844389468314042, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+  m_Motion: {fileID: 7400000, guid: a81004a5fb788e645be2753a14024f5f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -812,7 +812,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FG_Dive_GetUp
-  m_Speed: 1
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7407681581181343190}
@@ -825,7 +825,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9009065399342971356, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+  m_Motion: {fileID: 7400000, guid: 05d9db0e83bf257478146890b1837f9e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -947,7 +947,7 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6753220787085140817}
-    m_Position: {x: 390, y: 150, z: 0}
+    m_Position: {x: 380, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5780800556839851467}
     m_Position: {x: 460, y: 230, z: 0}
@@ -1089,7 +1089,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dive_Start
-  m_Speed: 1
+  m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1194563269888520460}
@@ -1102,7 +1102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 844423119496926050, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+  m_Motion: {fileID: 7400000, guid: 9af00a209797b914db4ae665c7a6ddb3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

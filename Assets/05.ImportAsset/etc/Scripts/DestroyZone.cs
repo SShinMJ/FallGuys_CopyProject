@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DestroyZone : MonoBehaviour
 {
-    public ParticleSystem bounce;
+    // public ParticleSystem bounce;
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(collision.other.gameObject);
 
-        bounce.Play();
-        bounce.transform.position = transform.position;
+        //bounce.Play();
+        //bounce.transform.position = transform.position;
     }
 }
