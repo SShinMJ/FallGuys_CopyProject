@@ -5,6 +5,14 @@ public class Jump : StateBase
 {
     // 점프 힘 크기
     [SerializeField] float _jumpForce = 5.0f;
+    float positionY;
+
+    public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    {
+        base.OnStateMachineEnter(animator, stateMachinePathHash);
+
+        positionY = transform.position.y;
+    }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -26,8 +34,14 @@ public class Jump : StateBase
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        if (rigidbody.velocity.y <= 0)
+        //if (controller.isGrounded)
+        //{
+        //    ChangeState(animator, State.Move);
+        //}
+
+        if (transform.position.y <= positionY - 3)
         {
+            Debug.Log("떨어짐! : " +  transform.position.y + " <= " + (positionY - 3));
             ChangeState(animator, State.Fall);
         }
     }

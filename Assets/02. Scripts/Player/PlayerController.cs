@@ -48,9 +48,12 @@ public class PlayerController : CharacterController
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            ChangeState(State.Slide);
+            if(_animator.GetInteger("state") != (int)State.Slide)
+            {
+                ChangeStateForcely(State.Slide);
+            }
         }
 
         if (Input.GetMouseButton(1))
@@ -67,6 +70,10 @@ public class PlayerController : CharacterController
             {
                 moveValue = 2f;
             }
+            else
+            {
+                ChangeState(State.Fall);
+            }
         }
         if (Input.GetMouseButtonUp(1))
         {
@@ -75,5 +82,11 @@ public class PlayerController : CharacterController
                 ChangeState(State.Move);
             }
         }
+    }
+
+    public void MoveValueInit()
+    {
+        moveValue = 1.0f;
+        currentTime = 0;
     }
 }

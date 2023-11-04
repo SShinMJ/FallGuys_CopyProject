@@ -29,7 +29,7 @@ public abstract class CharacterController : MonoBehaviour
 
     public State[] states;
     public State next;
-    private Animator _animator;
+    protected Animator _animator;
     public StateLayerMaskData stateLayerMaskData;
     public bool isGrounded => DetectGround();
 
@@ -85,7 +85,7 @@ public abstract class CharacterController : MonoBehaviour
             transform.Translate(_inertia * Time.fixedDeltaTime);
 
         // 카메라 방향으로 이동 방향 설정
-        var offset = Camera.main.transform.forward;
+        Vector3 offset = Camera.main.transform.forward;
         offset.y = 0;
         transform.LookAt(transform.position + offset);
 
@@ -93,7 +93,6 @@ public abstract class CharacterController : MonoBehaviour
         Vector3 expected = transform.position
                            + Quaternion.LookRotation(transform.forward, Vector3.up) * move * _moveSpeed * Time.fixedDeltaTime;
 
-        Debug.Log(transform.position + " > " + expected);
         transform.position = expected;
     }
 
