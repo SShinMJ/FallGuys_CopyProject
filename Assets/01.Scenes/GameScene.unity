@@ -31246,6 +31246,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 113328554467259879, guid: f1074b80576480a4ab31adb03e7b188c, type: 3}
   m_PrefabInstance: {fileID: 1078787612}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1079769557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079769559}
+  - component: {fileID: 1079769558}
+  m_Layer: 0
+  m_Name: PhotonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079769558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079769557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96a811b35ec91d49bc08bf821700d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameVersion: 
+  nickName: 
+--- !u!4 &1079769559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079769557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.204697, y: 27.285986, z: 232.10489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080043611
 GameObject:
   m_ObjectHideFlags: 0
@@ -47254,6 +47300,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1629821680}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629821688}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629821687}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1629821686}
   m_SourcePrefab: {fileID: 100100000, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
 --- !u!1 &1579879792
 GameObject:
@@ -48329,6 +48384,84 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629821679}
   m_Mesh: {fileID: 2959467708922500008, guid: 9c824d64b44b5e14686d8192d16f9f45, type: 3}
+--- !u!114 &1629821686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629821679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1629821688}
+  - {fileID: 1629821687}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1629821687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629821679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 0
+    Name: state
+  - Type: 1
+    SynchronizeType: 0
+    Name: h
+  - Type: 1
+    SynchronizeType: 0
+    Name: v
+  - Type: 4
+    SynchronizeType: 0
+    Name: dirtyBase
+  - Type: 4
+    SynchronizeType: 0
+    Name: dirtyTop
+  - Type: 1
+    SynchronizeType: 0
+    Name: SlideBlend
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
+--- !u!114 &1629821688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629821679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!4 &1631691679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5609456804426413636, guid: 18c35ff31a2f16f4c9c011fd013b0337, type: 3}
@@ -53424,7 +53557,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -67119,3 +67252,4 @@ SceneRoots:
   - {fileID: 365566825}
   - {fileID: 55588313}
   - {fileID: 1575340432}
+  - {fileID: 1079769559}
