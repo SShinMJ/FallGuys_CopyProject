@@ -70,10 +70,6 @@ public class PlayerController : CharacterController
             {
                 moveValue = 2f;
             }
-            else
-            {
-                ChangeState(State.Fall);
-            }
         }
         if (Input.GetMouseButtonUp(1))
         {

@@ -10,6 +10,7 @@ public class DestroyZone : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.transform.position = Vector3.zero;
+            collision.gameObject.GetComponent<PlayerController>().ChangeStateForcely(State.Move);
         }
         else
         {

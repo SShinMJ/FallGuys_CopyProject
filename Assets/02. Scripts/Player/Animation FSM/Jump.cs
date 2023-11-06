@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class Jump : StateBase
@@ -41,7 +40,6 @@ public class Jump : StateBase
 
         if (transform.position.y <= positionY - 3)
         {
-            Debug.Log("떨어짐! : " +  transform.position.y + " <= " + (positionY - 3));
             ChangeState(animator, State.Fall);
         }
     }
