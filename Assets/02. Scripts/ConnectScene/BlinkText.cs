@@ -1,34 +1,35 @@
-using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class BlinkText : MonoBehaviour
 {
-    void Awake()
-    {
-        gameObject.SetActive(false);
-    }
+    [SerializeField] TextMeshProUGUI waitingText;
 
-    private void Start()
-    {
-        StartCoroutine(ShowReady());
-    }
+    float countTime = 0;
+    bool isMax = false;
+    Color startColor = new Color32(255, 255, 255, 0);
+    Color endColor = new Color32(255, 255, 255, 255);
 
-    IEnumerator ShowReady()
+    private void Update()
     {
-        int count = 0;
-        while (count < 100)
+        if (waitingText.color.a >= 0.99)
         {
-            if (gameObject.activeInHierarchy)
-            {
-                Debug.Log("µé¾î¿È!");
-                gameObject.SetActive(true);
-                Debug.Log("ÄÑÁü!");
-                yield return new WaitForSeconds(.5f);
-                gameObject.SetActive(false);
-                Debug.Log("²¨Áü!");
-                yield return new WaitForSeconds(.5f);
-                count++;
-            }
+            isMax = true;
+            countTime = 0.01f;
         }
+        else if (waitingText.color.a <= 0.01)
+        {
+            isMax = false;
+            countTime = 0.03f;
+        }
+
+        countTime += Time.deltaTime;
+
+        if (isMax)
+        {
+            waitingText.color = Color32.Lerp(endColor, startColor, countTime / 2);
+        }
+        else
+            waitingText.color = Color32.Lerp(startColor, endColor, countTime / 2);
     }
 }
