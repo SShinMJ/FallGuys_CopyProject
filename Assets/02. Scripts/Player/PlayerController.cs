@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class PlayerController : CharacterController
@@ -6,6 +5,7 @@ public class PlayerController : CharacterController
     // 수직, 수평 입력 프로퍼티
     public override float horizontal 
     {
+        get { return Input.GetAxis("Horizontal"); }
         set
         {
             if(pw.IsMine)
@@ -16,6 +16,7 @@ public class PlayerController : CharacterController
     }
     public override float vertical
     {
+        get { return Input.GetAxis("Vertical"); }
         set
         {
             if (pw.IsMine)
@@ -26,6 +27,7 @@ public class PlayerController : CharacterController
     }
     public override float moveGain
     {
+        get { return moveValue; }
         set
         {
             if (pw.IsMine)
@@ -35,9 +37,9 @@ public class PlayerController : CharacterController
         }
     }
 
-    // 2초 이상 'W'키를 누를 시 달리기 시작한다.
+    
     float currentTime;
-    float limitTime = 1.0f;
+    float limitTime = 1.0f; // 1초 이상 'W'키를 누를 시 달리기 시작한다.
     float limitValue = 3.0f;
     float moveValue = 1.0f;
 

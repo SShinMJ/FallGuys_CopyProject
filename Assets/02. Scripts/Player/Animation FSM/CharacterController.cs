@@ -1,6 +1,5 @@
 using Photon.Pun;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 // abstract 이므로, 각 캐릭터(Player 등)이 상속받아 사용하면 된다.
@@ -69,40 +68,57 @@ public abstract class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isMovable)
+        if (pw.IsMine)
         {
-            move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
-        }
-        _animator.SetFloat("h", horizontal * moveGain);
-        _animator.SetFloat("v", vertical * moveGain);
+            if (isMovable)
+            {
+                move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
+            }
+            _animator.SetFloat("h", horizontal * moveGain);
+            _animator.SetFloat("v", vertical * moveGain);
+        } 
     }
 
     protected virtual void FixedUpdate()
     {
-        // 땅에 닿았는 지 여부에 따른 관성
-        if (DetectGround())
+        if(pw.IsMine)
         {
-            _inertia.y = 0.0f;
+            // 땅에 닿았는 지 여부에 따른 관성
+            if (DetectGround())
+            {
+                _inertia.y = 0.0f;
+            }
+            else
+            {
+                _inertia.y += Physics.gravity.y * Time.fixedDeltaTime;
+            }
+
+            // 관성 값이 생기면 위치를 변화시킨다.
+            if (_inertia.magnitude > 0.0f)
+                transform.Translate(_inertia * Time.fixedDeltaTime);
+
+            // 카메라 방향으로 이동 방향 설정
+            Vector3 offset = Camera.main.transform.forward;
+            offset.y = 0;
+            transform.LookAt(transform.position + offset);
+
+            // 이동
+            Vector3 expected = transform.position
+                               + Quaternion.LookRotation(transform.forward, Vector3.up) * move * _moveSpeed * Time.fixedDeltaTime;
+
+            transform.position = expected;
         }
-        else
-        {
-            _inertia.y += Physics.gravity.y * Time.fixedDeltaTime;
-        }
+        //else
+        //{
+        //    // 상대 플레이어의 위치, 회전값을 적용한다.
+        //    transform.position = receivedPos;
+        //    transform.rotation = receivedRot;
 
-        // 관성 값이 생기면 위치를 변화시킨다.
-        if (_inertia.magnitude > 0.0f)
-            transform.Translate(_inertia * Time.fixedDeltaTime);
+        //    Vector3 dir = new Vector3(receivedH, 0, receivedV);
+        //    dir = Camera.main.transform.TransformDirection(dir);
 
-        // 카메라 방향으로 이동 방향 설정
-        Vector3 offset = Camera.main.transform.forward;
-        offset.y = 0;
-        transform.LookAt(transform.position + offset);
-
-        // 이동
-        Vector3 expected = transform.position
-                           + Quaternion.LookRotation(transform.forward, Vector3.up) * move * _moveSpeed * Time.fixedDeltaTime;
-
-        transform.position = expected;
+        //    _animator.SetInteger("state", animState);
+        //}
     }
 
     // 땅인지 검사하는 함수
@@ -183,4 +199,31 @@ public abstract class CharacterController : MonoBehaviour
             layerIndex++;
         }
     }
+
+    //float receivedH;
+    //float receivedV;
+    //Vector3 receivedPos;
+    //Quaternion receivedRot;
+    //int animState;
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    // 상대쪽에 있는 현재 플레이어 위치, 회전 데이터를 상대 플레이어에게 보낸다.
+    //    if (stream.IsReading)
+    //    {
+    //        stream.SendNext(transform.position);
+    //        stream.SendNext(transform.rotation);
+    //        stream.SendNext(horizontal);
+    //        stream.SendNext(vertical);
+    //        stream.SendNext(_animator.GetInteger("state"));
+    //    }
+    //    // stream.IsWriting. 현재 플레이어쪽에 있는 상대 플레이어의 위치, 회전 데이터를 받는다.
+    //    else
+    //    {
+    //        receivedPos = (Vector3)stream.ReceiveNext();
+    //        receivedRot = (Quaternion)stream.ReceiveNext();
+    //        horizontal = (float)stream.ReceiveNext();
+    //        vertical = (float)stream.ReceiveNext();
+    //        animState = (int)stream.ReceiveNext();
+    //    }
+    //}
 }

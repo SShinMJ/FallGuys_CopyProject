@@ -45,7 +45,6 @@ public class JoinManager : MonoBehaviourPunCallbacks
     // 로비에 방을 만든다.
     public void CreatRoom()
     {
-        RoomOptions roomOptions = new RoomOptions();
         // 방을 roomName 이름으로 만든다.(이미 만들어져 있다면 Join)
         PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayerNum }, null);
     }
