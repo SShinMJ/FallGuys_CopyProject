@@ -1,12 +1,39 @@
+using Photon.Pun;
 using UnityEngine;
-using static UnityEditor.VersionControl.Asset;
 
 public class PlayerController : CharacterController
 {
     // 수직, 수평 입력 프로퍼티
-    public override float horizontal => Input.GetAxis("Horizontal");
-    public override float vertical => Input.GetAxis("Vertical");
-    public override float moveGain => moveValue;
+    public override float horizontal 
+    {
+        set
+        {
+            if(pw.IsMine)
+            {
+                horizontal = Input.GetAxis("Horizontal");
+            }
+        }
+    }
+    public override float vertical
+    {
+        set
+        {
+            if (pw.IsMine)
+            {
+                vertical = Input.GetAxis("Vertical");
+            }
+        }
+    }
+    public override float moveGain
+    {
+        set
+        {
+            if (pw.IsMine)
+            {
+                moveGain = moveValue;
+            }
+        }
+    }
 
     // 2초 이상 'W'키를 누를 시 달리기 시작한다.
     float currentTime;
@@ -18,64 +45,67 @@ public class PlayerController : CharacterController
     {
         base.Update();
 
-        if(Input.GetKey(KeyCode.W))
+        if (pw.IsMine)
         {
-            currentTime += Time.deltaTime;
-            if(currentTime > limitTime)
+            if (Input.GetKey(KeyCode.W))
             {
-                if (moveValue >= limitValue)
+                currentTime += Time.deltaTime;
+                if(currentTime > limitTime)
                 {
-                    moveValue = 3.0f;
+                    if (moveValue >= limitValue)
+                    {
+                        moveValue = 3.0f;
+                    }
+                    else
+                    {
+                        moveValue = Mathf.Lerp(1.0f, 3.0f, (currentTime- limitTime) * 2);
+                    }
                 }
-                else
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                // 자연스럽게 돌아올 수 있게 값 조절하는 부분 추가 필요~!
+                moveValue = 1.0f;
+                currentTime = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (isGrounded)
                 {
-                    moveValue = Mathf.Lerp(1.0f, 3.0f, (currentTime- limitTime) * 2);
+                    ChangeState(State.Jump);
                 }
             }
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            // 자연스럽게 돌아올 수 있게 값 조절하는 부분 추가 필요~!
-            moveValue = 1.0f;
-            currentTime = 0;
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isGrounded)
+            if (Input.GetMouseButton(0))
             {
-                ChangeState(State.Jump);
+                if(_animator.GetInteger("state") != (int)State.Slide)
+                {
+                    ChangeStateForcely(State.Slide);
+                }
             }
-        }
 
-        if (Input.GetMouseButton(0))
-        {
-            if(_animator.GetInteger("state") != (int)State.Slide)
+            if (Input.GetMouseButton(1))
             {
-                ChangeStateForcely(State.Slide);
+                if (isGrounded)
+                {
+                    moveValue = 2f;
+                    ChangeState(State.Grab);
+                }
             }
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            if (isGrounded)
+            if (Input.GetMouseButtonDown(1))
             {
-                moveValue = 2f;
-                ChangeState(State.Grab);
+                if (isGrounded)
+                {
+                    moveValue = 2f;
+                }
             }
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (isGrounded)
+            if (Input.GetMouseButtonUp(1))
             {
-                moveValue = 2f;
-            }
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            if (isGrounded)
-            {
-                ChangeState(State.Move);
+                if (isGrounded)
+                {
+                    ChangeState(State.Move);
+                }
             }
         }
     }

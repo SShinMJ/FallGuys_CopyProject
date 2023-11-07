@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ using UnityEngine;
 // == Animator의 Animation Blending을 고려한 설계이다.
 public abstract class CharacterController : MonoBehaviour
 {
+    // Photon
+    protected PhotonView pw;
+
     // 각 캐릭터에 따라 다른 입력을 받아오므로,
     public virtual float horizontal { get; set; }
     public virtual float vertical { get; set; }
@@ -56,6 +60,11 @@ public abstract class CharacterController : MonoBehaviour
         Array layers = Enum.GetValues(typeof(AnimatorLayers));
         states = new State[layers.Length - 1];
         ChangeStateForcely(State.Move);
+    }
+
+    private void Start()
+    {
+        pw = GetComponent<PhotonView>();
     }
 
     protected virtual void Update()

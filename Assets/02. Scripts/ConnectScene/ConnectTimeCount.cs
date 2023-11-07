@@ -6,7 +6,13 @@ public class ConnectTimeCount : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeCountText;
 
     float currenTime = 0;
-    float connectTimeLimit = 60;
+    float connectTimeLimit = 10;
+
+    bool isTimeOver = false;
+    public bool IsTimeOver
+    {
+        get { return isTimeOver; }
+    }
 
     void Update()
     {
@@ -14,9 +20,10 @@ public class ConnectTimeCount : MonoBehaviour
 
         timeCountText.text = ((int)(connectTimeLimit - currenTime)).ToString();
 
-        if(connectTimeLimit - currenTime == 0 )
+        if(connectTimeLimit - currenTime <= 0 )
         {
             // 게임 시작
+            isTimeOver = true;
         }
     }
 }
