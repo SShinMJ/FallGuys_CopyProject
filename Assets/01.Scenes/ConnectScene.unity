@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1\uBD84\uC774 \uC9C0\uB098\uAC70\uB098 \uC815\uC6D0\uC774 \uB2E4 \uCC28\uBA74
+  m_text: "0\uCD08\uAC00 \uB418\uAC70\uB098 \uC815\uC6D0\uC774 \uB2E4 \uCC28\uBA74
     \uC2DC\uC791\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5642ccf9328024a4fba338886bce1feb, type: 2}
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 19
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeCountText: {fileID: 1172641896}
-  isTimeOver: 0
+  photonData: {fileID: 1764823136}
 --- !u!1 &1764823133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1117,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1764823135}
   - component: {fileID: 1764823134}
+  - component: {fileID: 1764823137}
+  - component: {fileID: 1764823136}
   m_Layer: 0
   m_Name: PhotonManager
   m_TagString: Untagged
@@ -1154,6 +1156,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764823136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764823133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1806b28ac92c3224aa9865652f10528b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1764823137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764823133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1764823136}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1915631613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3413505165319610160, guid: 2333e9f965923a24a8e7ed881b8c8945, type: 3}

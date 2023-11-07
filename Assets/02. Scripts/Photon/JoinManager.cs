@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// 첫 입장 클라이언트는 방을 만들며 입장하고,
+// 일정 조건(1분, 10명)동안 클라이언트들의 입장(Join)을 받는다.
 public class JoinManager : MonoBehaviourPunCallbacks
 {
     // 방 이름
@@ -22,6 +24,12 @@ public class JoinManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
+        // 현재 접속자 수 UI 텍스트로 출력
+        if (headCountText != null && PhotonNetwork.CurrentRoom != null)
+        {
+            headCountText.text = (PhotonNetwork.CurrentRoom.PlayerCount).ToString() + " / " + maxPlayerNum;
+        }
+
         // 정원이 다 들어왔거나 제한 시간이 끝났다면,
         if (PhotonNetwork.CurrentRoom != null && counting != null)
         {
@@ -45,7 +53,6 @@ public class JoinManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        headCountText.text = (PhotonNetwork.CurrentRoom.PlayerCount).ToString() + " / " + maxPlayerNum;
     }
 
     public override void OnCreatedRoom()

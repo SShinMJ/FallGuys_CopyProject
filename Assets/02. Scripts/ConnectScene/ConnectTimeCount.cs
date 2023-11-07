@@ -1,12 +1,14 @@
 using TMPro;
 using UnityEngine;
 
+// 일정 시간(1분)이 지나면 지났음을 알린다. (IsTimeOver 값으로 알려진다)
 public class ConnectTimeCount : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeCountText;
 
-    float currenTime = 0;
     float connectTimeLimit = 10;
+
+    [SerializeField] OnPhotonSerializeView photonData;
 
     bool isTimeOver = false;
     public bool IsTimeOver
@@ -16,11 +18,9 @@ public class ConnectTimeCount : MonoBehaviour
 
     void Update()
     {
-        currenTime += Time.deltaTime;
+        timeCountText.text = ((int)(connectTimeLimit - photonData.CurrentTime)).ToString();
 
-        timeCountText.text = ((int)(connectTimeLimit - currenTime)).ToString();
-
-        if(connectTimeLimit - currenTime <= 0 )
+        if(connectTimeLimit - photonData.CurrentTime <= 0 )
         {
             // 게임 시작
             isTimeOver = true;
