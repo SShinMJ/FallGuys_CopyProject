@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,9 @@ using UnityEngine.SceneManagement;
 // 일정 조건(1분, 10명)동안 클라이언트들의 입장(Join)을 받는다.
 public class JoinManager : MonoBehaviourPunCallbacks
 {
+    // ConnectScene Objects
+    [SerializeField] GameObject connectScene;
+
     // 방 이름
     string roomName = "GameRoom";
 
@@ -16,6 +20,19 @@ public class JoinManager : MonoBehaviourPunCallbacks
     [SerializeField] ConnectTimeCount counting;
 
     public TMP_Text headCountText;
+
+    // 플레이어 오브젝트
+    GameObject player;
+
+    // Photon view 플레이어
+    [SerializeField] PhotonView playerPrefab;
+    // 리스폰 위치
+    [SerializeField] Transform[] playerSpawnPoints;
+    // 맵 오브젝트
+    [SerializeField] GameObject map;
+
+    // 현재 접속한 클라이언트의 ActorNumber(고유 넘버) (아마 입장 순일듯)
+    int actorNumber;
 
     private void Start()
     {
@@ -52,6 +69,9 @@ public class JoinManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        player = PhotonNetwork.Instantiate(playerPrefab.name, playerSpawnPoints[actorNumber].position, Quaternion.identity);
+        player.SetActive(false);
     }
 
     public override void OnCreatedRoom()
@@ -75,6 +95,13 @@ public class JoinManager : MonoBehaviourPunCallbacks
     {
         // 게임이 시작되므로 입장 제한
         PhotonNetwork.CurrentRoom.IsOpen = false;
-        SceneManager.LoadScene("GameScene");
+
+        connectScene.SetActive(false);
+        map.SetActive(true);
+        player.SetActive(true);
+        Camera.main.GetComponent<CameraRoatate>().enabled = true;
+        GetComponent<RoomManager>().isStartGame = true;
+
+        //SceneManager.LoadScene("GameScene");
     }
 }

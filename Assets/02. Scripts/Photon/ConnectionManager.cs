@@ -19,6 +19,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     public void Connect()
     {
         PhotonNetwork.GameVersion = gameVersion;
+        // 나중에 백 서버에서 받아와서 담기.
         PhotonNetwork.NickName = nickName;
 
         // AutomaticallySyncScene: 마스터 클라이언트와 일반 클라이언트들이 레벨을 동기화할지 결정
@@ -46,8 +47,8 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnConnectedToMaster();
 
-        // Lobby 씬으로 이동
-        SceneManager.LoadScene("ConnectScene");
+        // Conntect와 게임이 포함된 씬으로 이동
+        SceneManager.LoadScene("ConnectToGameScene");
 
         //JoinLobby();
     }

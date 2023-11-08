@@ -41,7 +41,7 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _slope = 45.0f;
 
-    protected virtual void Awake()
+    protected virtual void OnEnable()
     {
         _animator = GetComponent<Animator>();
         pw = GetComponent<PhotonView>();
