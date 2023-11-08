@@ -14,7 +14,7 @@ public class DestroyZone : MonoBehaviour
         }
         else
         {
-            Destroy(collision.other.gameObject);
+            Destroy(collision.gameObject);
         }
 
         //bounce.Play();

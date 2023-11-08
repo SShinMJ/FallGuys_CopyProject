@@ -4,7 +4,7 @@ using UnityEngine;
 
 // abstract 이므로, 각 캐릭터(Player 등)이 상속받아 사용하면 된다.
 // == Animator의 Animation Blending을 고려한 설계이다.
-public abstract class CharacterController : MonoBehaviour
+public abstract class CharacterController : MonoBehaviour, IPunObservable
 {
     // Photon
     public PhotonView pw;
@@ -39,12 +39,11 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] private float _groundDetectRadius;
     private Vector3 _inertia;  // 관성
     [SerializeField] private LayerMask _groundMask;
-    [SerializeField] private float _slope = 45.0f;
 
     protected virtual void OnEnable()
     {
-        _animator = GetComponent<Animator>();
         pw = GetComponent<PhotonView>();
+        _animator = GetComponent<Animator>();
 
         // 내가 원하는 StateMachineBehaviour 데이터들을 읽어올 수 있다.(배열 리턴)
         // StateBase 스크립트가 포함된 애니메이션들이 불러와진다.
@@ -70,7 +69,12 @@ public abstract class CharacterController : MonoBehaviour
             }
             _animator.SetFloat("h", horizontal * moveGain);
             _animator.SetFloat("v", vertical * moveGain);
-        } 
+        }
+        else
+        {
+            _animator.SetFloat("h", receivedH * receiveMoveGain);
+            _animator.SetFloat("v", receivedV * receiveMoveGain);
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -102,17 +106,6 @@ public abstract class CharacterController : MonoBehaviour
 
             transform.position = expected;
         }
-        //else
-        //{
-        //    // 상대 플레이어의 위치, 회전값을 적용한다.
-        //    transform.position = receivedPos;
-        //    transform.rotation = receivedRot;
-
-        //    Vector3 dir = new Vector3(receivedH, 0, receivedV);
-        //    dir = Camera.main.transform.TransformDirection(dir);
-
-        //    _animator.SetInteger("state", animState);
-        //}
     }
 
     // 땅인지 검사하는 함수
@@ -194,30 +187,24 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-    //float receivedH;
-    //float receivedV;
-    //Vector3 receivedPos;
-    //Quaternion receivedRot;
-    //int animState;
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    // 상대쪽에 있는 현재 플레이어 위치, 회전 데이터를 상대 플레이어에게 보낸다.
-    //    if (stream.IsReading)
-    //    {
-    //        stream.SendNext(transform.position);
-    //        stream.SendNext(transform.rotation);
-    //        stream.SendNext(horizontal);
-    //        stream.SendNext(vertical);
-    //        stream.SendNext(_animator.GetInteger("state"));
-    //    }
-    //    // stream.IsWriting. 현재 플레이어쪽에 있는 상대 플레이어의 위치, 회전 데이터를 받는다.
-    //    else
-    //    {
-    //        receivedPos = (Vector3)stream.ReceiveNext();
-    //        receivedRot = (Quaternion)stream.ReceiveNext();
-    //        horizontal = (float)stream.ReceiveNext();
-    //        vertical = (float)stream.ReceiveNext();
-    //        animState = (int)stream.ReceiveNext();
-    //    }
-    //}
+    float receivedH;
+    float receivedV;
+    float receiveMoveGain;
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(horizontal);
+            stream.SendNext(vertical);
+            stream.SendNext(moveGain);
+            stream.SendNext(_animator.GetInteger("state"));
+        }
+        else
+        {
+            receivedH = (float)stream.ReceiveNext();
+            receivedV = (float)stream.ReceiveNext();
+            receiveMoveGain = (float)stream.ReceiveNext();
+            ChangeState((State)stream.ReceiveNext());
+        }
+    }
 }

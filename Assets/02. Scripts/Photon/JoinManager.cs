@@ -100,7 +100,6 @@ public class JoinManager : MonoBehaviourPunCallbacks
         map.SetActive(true);
         player.SetActive(true);
         Camera.main.GetComponent<CameraRoatate>().enabled = true;
-        GetComponent<RoomManager>().isStartGame = true;
 
         //SceneManager.LoadScene("GameScene");
     }
