@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf647f3811952a044824267412349d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pw: {fileID: 0}
   _moveSpeed: 2
   move: {x: 0, y: 0, z: 0}
   states: 
@@ -423,7 +424,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1871271635376433081}
   - {fileID: 9140824593399451754}
   - {fileID: 946589009552639490}
   sceneViewId: 0
@@ -1964,7 +1964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6249256012491644648
 Transform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 4
-  player: {fileID: 1948795701979135461}
+  targetPlayer: {fileID: 0}
 --- !u!1 &9068392027618814136
 GameObject:
   m_ObjectHideFlags: 0

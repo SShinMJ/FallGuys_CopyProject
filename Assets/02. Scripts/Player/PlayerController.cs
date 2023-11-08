@@ -1,3 +1,4 @@
+using Photon.Realtime;
 using UnityEngine;
 
 public class PlayerController : CharacterController
@@ -37,11 +38,19 @@ public class PlayerController : CharacterController
         }
     }
 
-    
     float currentTime;
     float limitTime = 1.0f; // 1초 이상 'W'키를 누를 시 달리기 시작한다.
     float limitValue = 3.0f;
     float moveValue = 1.0f;
+
+    void Start()
+    {
+        // 메인 카메라의 타겟을 각 클라이언트로 잡히게 한다.
+        if (pw.IsMine)
+        {
+            Camera.main.GetComponent<CameraRoatate>().targetPlayer = gameObject;
+        }
+    }
 
     protected override void Update()
     {

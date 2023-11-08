@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class CharacterController : MonoBehaviour
 {
     // Photon
-    protected PhotonView pw;
+    public PhotonView pw;
 
     // 각 캐릭터에 따라 다른 입력을 받아오므로,
     public virtual float horizontal { get; set; }
@@ -40,12 +40,11 @@ public abstract class CharacterController : MonoBehaviour
     private Vector3 _inertia;  // 관성
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _slope = 45.0f;
-    private Rigidbody _rigidbody;
 
     protected virtual void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+        pw = GetComponent<PhotonView>();
 
         // 내가 원하는 StateMachineBehaviour 데이터들을 읽어올 수 있다.(배열 리턴)
         // StateBase 스크립트가 포함된 애니메이션들이 불러와진다.
@@ -59,11 +58,6 @@ public abstract class CharacterController : MonoBehaviour
         Array layers = Enum.GetValues(typeof(AnimatorLayers));
         states = new State[layers.Length - 1];
         ChangeStateForcely(State.Move);
-    }
-
-    private void Start()
-    {
-        pw = GetComponent<PhotonView>();
     }
 
     protected virtual void Update()
