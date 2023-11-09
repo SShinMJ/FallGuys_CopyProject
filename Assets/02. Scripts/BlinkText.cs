@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BlinkText : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI waitingText;
+    [SerializeField] TextMeshProUGUI targetText;
 
     float countTime = 0;
     bool isMax = false;
@@ -12,12 +12,12 @@ public class BlinkText : MonoBehaviour
 
     private void Update()
     {
-        if (waitingText.color.a >= 0.99)
+        if (targetText.color.a >= 0.99)
         {
             isMax = true;
             countTime = 0.01f;
         }
-        else if (waitingText.color.a <= 0.01)
+        else if (targetText.color.a <= 0.01)
         {
             isMax = false;
             countTime = 0.03f;
@@ -27,9 +27,9 @@ public class BlinkText : MonoBehaviour
 
         if (isMax)
         {
-            waitingText.color = Color32.Lerp(endColor, startColor, countTime / 2);
+            targetText.color = Color32.Lerp(endColor, startColor, countTime / 2);
         }
         else
-            waitingText.color = Color32.Lerp(startColor, endColor, countTime / 2);
+            targetText.color = Color32.Lerp(startColor, endColor, countTime / 2);
     }
 }
