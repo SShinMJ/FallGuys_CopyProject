@@ -82,13 +82,13 @@ public class PlayerController : CharacterController
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGrounded)
+                if (isGrounded && _animator.GetInteger("state") != (int)State.Slide)
                 {
                     ChangeState(State.Jump);
                 }
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 if(_animator.GetInteger("state") != (int)State.Slide)
                 {
