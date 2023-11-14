@@ -3,14 +3,13 @@ package com.example.fallguys.domain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Collection;
 
-@ApiModel(value = "회원 정보", description = "아이디, 이메일, 비밀번호 등 회원 정보를 가진 Class")
+@ApiModel(value = "회원 정보", description = "식별자, 아이디, 비밀번호 등 회원 정보를 가진 Class")
 @Entity(name = "user")
 @Getter
 @Setter
@@ -25,7 +24,7 @@ public class User implements UserDetails {
     @Column(name = "user_number")
     private Long userNumber;
 
-    @ApiModelProperty(value = "이메일")
+    @ApiModelProperty(value = "아이디")
     @Column(name = "user_id", nullable = false, unique = true,  length = 40)
     private String userId;
 
@@ -37,10 +36,6 @@ public class User implements UserDetails {
     @Column(name = "user_nickname", nullable = false,  length = 20)
     private String userNickname;
 
-    @ApiModelProperty(value = "역할")
-    @Column(name = "role", nullable = false)
-    @ColumnDefault("false")
-    private boolean role;
 
     @Builder
     public User (String userNickname, String userId, String userPassword) {
@@ -61,7 +56,7 @@ public class User implements UserDetails {
         return this.userPassword;
     }
 
-    //이메일
+    //아이디
     @Override
     public String getUsername() {
         return this.userId;

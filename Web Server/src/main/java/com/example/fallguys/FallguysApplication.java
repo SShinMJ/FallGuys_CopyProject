@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource(value = { "classpath:application-auth.properties" })
+@PropertySource(value = { "classpath:application.properties" })
 public class FallguysApplication {
 
 	public static void main(String[] args) {
