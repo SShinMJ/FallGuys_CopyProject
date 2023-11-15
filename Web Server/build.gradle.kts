@@ -27,8 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
-	implementation("io.springfox:springfox-swagger2:3.0.0")
-	implementation("io.springfox:springfox-swagger-ui:3.0.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
@@ -40,6 +39,9 @@ dependencies {
 	runtimeOnly("com.mysql:mysql-connector-j")
 
 	implementation("io.jsonwebtoken:jjwt:0.9.1")
+	implementation("com.sun.xml.bind:jaxb-impl:4.0.1")
+	implementation("com.sun.xml.bind:jaxb-core:4.0.1")
+	implementation("javax.xml.bind:jaxb-api:2.4.0-b180830.0359")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")

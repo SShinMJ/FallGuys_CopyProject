@@ -44,7 +44,7 @@ public class SecurityConfig{
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                                 authorizeHttpRequests
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .requestMatchers("/exception/**", "/item/**", "/v3/api-docs/**", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
+                .requestMatchers("/exception/**", "/item/**", "/v2/api-docs", "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
                 .requestMatchers("/api/user/signup/**", "/api/user/login/**", "/api/user/checknickname").permitAll()
                 .anyRequest().authenticated()
                 )
