@@ -28,12 +28,6 @@ public class UserController {
         return new BaseResponse(BaseResponseCode.OK.getHttpStatus(), BaseResponseCode.OK.getMessage(), userService.signUp(userSignupRequestDto));
     }
 
-    @Operation(summary = "닉네임 체크", description = "닉네임 중복 여부 체크")
-    @PostMapping("/checknickname")
-    public BaseResponse<SuccessResponseDto> nicknameCheck(@Parameter(name = "UserCheckNameRequestDto", description = "회원가입 닉네임", required = true) @RequestBody UserCheckNameRequestDto userCheckNameRequestDto) throws Exception {
-        return new BaseResponse(userService.nicknameCheck(userCheckNameRequestDto.getUserNickname()).getStatus(), "요청 성공했습니다.", userService.nicknameCheck(userCheckNameRequestDto.getUserNickname()));
-    }
-
     @Operation(summary = "로그인", description = "이메일로 로그인을 합니다.")
     @PostMapping("/login")
     public BaseResponse<UserLoginResponseDto> login(@Parameter(name = "UserLoginRequestDto", description = "회원 한 명의 정보를 갖는 객체", required = true) @RequestBody UserLoginRequestDto userLoginDto) throws Exception {

@@ -44,7 +44,7 @@ public class User implements UserDetails {
 
     @Schema(name = "현재 코스튬 색")
     @Column(name = "user_costume_color", nullable = false)
-    @ColumnDefault("1")
+    @ColumnDefault("0")
     private int userCostumeColor;
 
 

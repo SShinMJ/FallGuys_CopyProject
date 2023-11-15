@@ -26,7 +26,7 @@ public class UserCostumeColor {
     @JoinColumn(name = "user_number", foreignKey = @ForeignKey(name = "FK_user"))
     private User user;
 
-    @Schema(name = "CustumeColor")
+    @Schema(name = "CostumeColor")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "costume_color_number", foreignKey = @ForeignKey(name = "FK_costume_color"))
     private CostumeColor costumeColor;
@@ -38,8 +38,9 @@ public class UserCostumeColor {
 
 
     @Builder
-    public UserCostumeColor (Long userCostumeColorNumber, boolean isOwn) {
-        this.userCostumeColorNumber = userCostumeColorNumber;
+    public UserCostumeColor (User user, CostumeColor costumeColor, boolean isOwn) {
+        this.user = user;
+        this.costumeColor = costumeColor;
         this.isOwn = isOwn;
     }
 }
