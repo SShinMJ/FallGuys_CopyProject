@@ -1,40 +1,51 @@
 package com.example.fallguys.domain;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 import java.util.Collection;
 
-@ApiModel(value = "회원 정보", description = "식별자, 아이디, 비밀번호 등 회원 정보를 가진 Class")
+@Tag(name = "회원 정보", description = "식별자, 아이디, 비밀번호 등 회원 정보를 가진 Class")
 @Entity(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "USER")
+@Table(name = "User")
 public class User implements UserDetails {
 
-    @ApiModelProperty(value = "식별자")
+    @Schema(name = "식별자")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_number")
     private Long userNumber;
 
-    @ApiModelProperty(value = "아이디")
+    @Schema(name = "아이디")
     @Column(name = "user_id", nullable = false, unique = true,  length = 40)
     private String userId;
 
-    @ApiModelProperty(value = "비밀번호")
+    @Schema(name = "비밀번호")
     @Column(name = "user_password", nullable = false)
     private String userPassword;
 
-    @ApiModelProperty(value = "별명")
+    @Schema(name = "별명")
     @Column(name = "user_nickname", nullable = false,  length = 20)
     private String userNickname;
+
+    @Schema(name = "쿠도스")
+    @Column(name = "user_kudos", nullable = false)
+    @ColumnDefault("0")
+    private int userKudos;
+
+    @Schema(name = "현재 코스튬 색")
+    @Column(name = "user_costume_color", nullable = false)
+    @ColumnDefault("1")
+    private int userCostumeColor;
 
 
     @Builder
