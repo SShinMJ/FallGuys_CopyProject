@@ -8,7 +8,7 @@ public class UserResponseDto {
     private final String userId;
     private final String userNickname;
     private final int userKudos;
-    private final int userCostumeColor;
+    private final Long userCostumeColor;
 
     public UserResponseDto(User user) {
         this.userId = user.getUserId();

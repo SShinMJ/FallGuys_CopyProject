@@ -45,14 +45,16 @@ public class User implements UserDetails {
     @Schema(name = "현재 코스튬 색")
     @Column(name = "user_costume_color", nullable = false)
     @ColumnDefault("0")
-    private int userCostumeColor;
+    private Long userCostumeColor;
 
 
     @Builder
-    public User (String userNickname, String userId, String userPassword) {
+    public User (String userNickname, String userId, String userPassword, int userKudos, long userCostumeColor) {
         this.userNickname = userNickname;
         this.userId = userId;
         this.userPassword = userPassword;
+        this.userKudos = userKudos;
+        this.userCostumeColor = userCostumeColor;
     }
 
     //해당 유저의 권한 목록

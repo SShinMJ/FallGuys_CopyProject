@@ -25,6 +25,8 @@ public enum BaseResponseCode {
      * 404 NOT FOUND
      */
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
+    USER_COLOR_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 사용자 색상 소유 정보 데이터를 찾을 수 없습니다."),
+    COSTUME_COLOR_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 색상 데이터를 찾을 수 없습니다."),
 
     /**
      * 404 NOT FOUND

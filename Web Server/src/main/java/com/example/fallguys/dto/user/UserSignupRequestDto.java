@@ -26,6 +26,8 @@ public class UserSignupRequestDto {
                 .userId(userId)
                 .userPassword(userPassword)
                 .userNickname(userNickname)
+                .userKudos(0)
+                .userCostumeColor(0)
                 .build();
     }
 }
