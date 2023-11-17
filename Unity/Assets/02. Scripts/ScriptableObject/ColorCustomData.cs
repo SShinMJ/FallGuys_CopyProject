@@ -4,6 +4,7 @@ using UnityEngine;
 public class ColorCustomData : ScriptableObject
 {
     public int colorId;
+    public int price;
     public Sprite colorImage;
     public Material colorMaterial;
 }

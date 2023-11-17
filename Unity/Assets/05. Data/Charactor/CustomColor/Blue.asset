@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   colorId: 6
+  price: 500
   colorImage: {fileID: 21300000, guid: 0958890e2097f2045a19240635124233, type: 3}
   colorMaterial: {fileID: 2100000, guid: 89a457b5f7c01c942ac72008e635a821, type: 2}

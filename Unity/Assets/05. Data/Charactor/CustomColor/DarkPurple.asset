@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DarkPurple
   m_EditorClassIdentifier: 
   colorId: 14
+  price: 1500
   colorImage: {fileID: 21300000, guid: 0f235afc5d920844f951aa3dc2a62d02, type: 3}
   colorMaterial: {fileID: 2100000, guid: 176434c076178e6468c28eb30bd4b4f8, type: 2}

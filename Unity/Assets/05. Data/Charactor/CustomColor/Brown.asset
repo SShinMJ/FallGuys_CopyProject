@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Brown
   m_EditorClassIdentifier: 
   colorId: 15
+  price: 1000
   colorImage: {fileID: 21300000, guid: 975303afca0191a4c81841bbfd439b4a, type: 3}
   colorMaterial: {fileID: 2100000, guid: ad886bb7e4b9d054290de75975372558, type: 2}

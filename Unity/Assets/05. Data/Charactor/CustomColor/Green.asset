@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Green
   m_EditorClassIdentifier: 
   colorId: 4
+  price: 500
   colorImage: {fileID: 21300000, guid: 526225e53216ce245966ecdcac7d75ed, type: 3}
   colorMaterial: {fileID: 2100000, guid: f82a28b7361608c4d8a3c55cea63e105, type: 2}

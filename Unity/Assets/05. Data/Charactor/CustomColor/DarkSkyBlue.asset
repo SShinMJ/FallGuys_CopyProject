@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DarkSkyBlue
   m_EditorClassIdentifier: 
   colorId: 12
+  price: 1500
   colorImage: {fileID: 21300000, guid: 4dc8a2625817a96449b02ed5c1394fa2, type: 3}
   colorMaterial: {fileID: 2100000, guid: 3634a896f8b6e324882ee28862d43200, type: 2}

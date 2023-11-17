@@ -48,7 +48,7 @@ public class LoginConnectionManager : MonoBehaviour
         public string message;
         public ResultData data;
     }
-    
+
     [System.Serializable]
     public class ResultData
     {
@@ -83,7 +83,7 @@ public class LoginConnectionManager : MonoBehaviour
                 userInfoManager.SetToken(response.data.token);
 
                 // 로딩씬 불러오기
-                SceneManager.LoadScene("LoadingScene");
+                SceneManager.LoadScene("LobbyScene");
             }
         }
     }

@@ -37,6 +37,7 @@ public class SettingManager : MonoBehaviour
         userNickname.text = inputNickname.text;
 
         // 웹서버에 변경된 닉네임을 저장하기 위해 보낸다.
+
     }
 
     public void ChangeVolumn()
