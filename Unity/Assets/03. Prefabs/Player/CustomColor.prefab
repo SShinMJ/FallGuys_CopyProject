@@ -247,8 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  material: {fileID: 0}
-  colorID: 0
+  colorData: {fileID: 0}
+  userInfo: {fileID: 0}
+  notification: {fileID: 0}
 --- !u!114 &-5391909329025449168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +365,7 @@ GameObject:
   - component: {fileID: 7722241564998287317}
   - component: {fileID: 7510518424910006396}
   - component: {fileID: 4004074413347029318}
+  - component: {fileID: 752752936345221138}
   m_Layer: 5
   m_Name: isGetBackground
   m_TagString: Untagged
@@ -429,6 +431,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &752752936345221138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551451085280879969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4736558105111103083}
+          m_TargetAssemblyTypeName: SelectColorManager, Assembly-CSharp
+          m_MethodName: GetColorRequest
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &6378542144692996941
 GameObject:
   m_ObjectHideFlags: 0

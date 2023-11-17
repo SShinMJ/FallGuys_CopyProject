@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4355b3c41c247f14aa6a5781ada03d76, type: 3}
   m_Name: DarkRed
   m_EditorClassIdentifier: 
-  colorId: 9
+  colorId: 3
   price: 1500
   colorImage: {fileID: 21300000, guid: 10652798002a1c846a480186c85b0aca, type: 3}
   colorMaterial: {fileID: 2100000, guid: 80e82b29959cc0b48b26f54d1f4ef7ff, type: 2}

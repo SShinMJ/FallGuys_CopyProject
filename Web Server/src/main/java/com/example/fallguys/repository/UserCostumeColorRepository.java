@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface UserCostumeColorRepository extends JpaRepository<UserCostumeColor, Long> {
     List<UserCostumeColor> findByUser(User user);
-    Optional<UserCostumeColor> findByCostumeColor(CostumeColor costumeColor);
+    Optional<UserCostumeColor> findByUserAndCostumeColor(User user, CostumeColor costumeColor);
 }

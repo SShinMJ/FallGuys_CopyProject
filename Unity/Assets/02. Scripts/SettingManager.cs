@@ -4,11 +4,18 @@ using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
+    [SerializeField] UserInfoManager userInfo;
+
     [SerializeField] TextMeshProUGUI userNickname;
     [SerializeField] TextMeshProUGUI inputNickname;
     [SerializeField] Slider volumnValue;
     [SerializeField] TextMeshProUGUI volumnText;
     [SerializeField] AudioSource bgm;
+
+    private void Awake()
+    {
+        userInfo = FindObjectOfType<UserInfoManager>();
+    }
 
     void Start()
     {
@@ -29,15 +36,17 @@ public class SettingManager : MonoBehaviour
     public void GetUserNickname()
     {
         // 로그인 시 받아온 유저 정보 중 닉네임 값을 가져와 담는다.
-        userNickname.text = "Test User";
+        if(userInfo.nickname == null) 
+            userNickname.text = "Test User";
+        else
+            userNickname.text = userInfo.nickname;
     }
 
     public void ChangeNickname()
     {
         userNickname.text = inputNickname.text;
 
-        // 웹서버에 변경된 닉네임을 저장하기 위해 보낸다.
-
+        userInfo.UpdateNickname(userNickname.text);
     }
 
     public void ChangeVolumn()

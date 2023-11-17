@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4355b3c41c247f14aa6a5781ada03d76, type: 3}
   m_Name: Yellow
   m_EditorClassIdentifier: 
-  colorId: 3
+  colorId: 6
   price: 500
   colorImage: {fileID: 21300000, guid: 975303afca0191a4c81841bbfd439b4a, type: 3}
   colorMaterial: {fileID: 2100000, guid: 53695a04dd1b8ff4399cd049a652ce6a, type: 2}

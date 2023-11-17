@@ -113,10 +113,6 @@ public class UserService {
     }
 
     public SuccessResponseDto updateUserCostumeColor(UserColorUpdateRequestDto userColorUpdateRequestDto) {
-        if(costumeColorRepository.existsById(userColorUpdateRequestDto.getCostumeColorNumber())){
-            throw new BaseException(BaseResponseCode.COSTUME_COLOR_NOT_FOUND);
-        }
-
         User user = findUserByToken();
 
         user.setUserCostumeColor(userColorUpdateRequestDto.getCostumeColorNumber());
@@ -126,17 +122,13 @@ public class UserService {
     }
 
     public SuccessResponseDto updateGetUserCostumeColor(UserGetColorRequestDto userGetColorRequestDto) {
-        if(costumeColorRepository.existsById(userGetColorRequestDto.getCostumeColorNumber())){
-            throw new BaseException(BaseResponseCode.COSTUME_COLOR_NOT_FOUND);
-        }
-
         User user = findUserByToken();
         user.setUserKudos(user.getUserKudos() - userGetColorRequestDto.getCostumeColorCost());
         userRepository.save(user);
 
         CostumeColor color = costumeColorRepository.findById(userGetColorRequestDto.getCostumeColorNumber())
                 .orElseThrow(() -> new BaseException(BaseResponseCode.COSTUME_COLOR_NOT_FOUND));
-        UserCostumeColor userColor = userCostumeColorRepository.findByCostumeColor(color)
+        UserCostumeColor userColor = userCostumeColorRepository.findByUserAndCostumeColor(user, color)
                 .orElseThrow(() -> new BaseException(BaseResponseCode.USER_COLOR_NOT_FOUND));
         userColor.setOwn(true);
         userCostumeColorRepository.save(userColor);

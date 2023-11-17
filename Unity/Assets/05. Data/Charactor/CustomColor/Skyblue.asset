@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4355b3c41c247f14aa6a5781ada03d76, type: 3}
   m_Name: Skyblue
   m_EditorClassIdentifier: 
-  colorId: 5
+  colorId: 9
   price: 500
   colorImage: {fileID: 21300000, guid: ac6496a0164f38444902f35acd25e3aa, type: 3}
   colorMaterial: {fileID: 2100000, guid: 2f56d39f446536d41851cabfe04b7e76, type: 2}

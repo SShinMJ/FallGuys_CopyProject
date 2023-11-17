@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] RectTransform scrollContent;
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject notification;
     [SerializeField] GameObject contents;
     [SerializeField] GameObject slotPrefab;
     [SerializeField] List<ColorCustomData> slotDatas = new List<ColorCustomData>();
@@ -46,13 +47,13 @@ public class ItemManager : MonoBehaviour
             colorStatusList.Add(new colorList() { slot = slot, colordata = slotData, isOwn = false });
 
             slot.GetComponent<Image>().sprite = slotData.colorImage;
-            slot.GetComponent<SelectColorManager>().colorID = slotData.colorId;
             slot.GetComponent<SelectColorManager>().player = player;
-            slot.GetComponent<SelectColorManager>().material = slotData.colorMaterial;
+            slot.GetComponent<SelectColorManager>().colorData = slotData;
+            slot.GetComponent<SelectColorManager>().notification = notification;
             slot.transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = slotData.price.ToString();
 
             // 현재 플레이어 색 정보를 받아와 선택중임을 표시
-            if (player.GetComponent<PlayerCurrentCostume>().currentMaterialID == slotData.colorId)
+            if (userInfo.costumeColor.colorId == slotData.colorId)
             {
                 slot.transform.GetChild(1).gameObject.SetActive(true);
                 player.GetComponent<PlayerCurrentCostume>().currentMaterialSlot = slot;

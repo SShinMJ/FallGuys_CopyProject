@@ -55,7 +55,6 @@ public class UserCostumeStatusConnectionManager : MonoBehaviour
                 var response = JsonUtility.FromJson<ResponseData>(www.downloadHandler.text);
                 userInfo.SetUserCostumeList(response.data);
                 userInfo.isSetCostumeList = true;
-                Debug.Log(www.downloadHandler.text);
             }
 
             isSet = true;

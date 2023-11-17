@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DataLoadingManager : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
     [SerializeField] UserInfoManager userInfo;
     [SerializeField] UserInfoConnectionManager userInfoConnectionManager;
     [SerializeField] UserCostumeStatusConnectionManager userCostumeStatusConnection;
+    [SerializeField] UserNicknameUpdateManager userNicknameUpdateManager;
+    [SerializeField] UserCostumeColorUpdateManager userCostumeColorUpdateManager;
+    [SerializeField] UserCostumeStatusUpdateManager UserCostumeStatusUpdateManager;
 
+    [SerializeField] GameObject loadingCanvas;
     [SerializeField] GameObject resultUI;
     [SerializeField] TextMeshProUGUI resultText;
 
@@ -34,8 +36,6 @@ public class DataLoadingManager : MonoBehaviour
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
-
         // 둘 다 통신이 완료됐다면,
         if (userInfoConnectionManager.isSet && userCostumeStatusConnection.isSet)
         {
@@ -44,6 +44,8 @@ public class DataLoadingManager : MonoBehaviour
 
         if (itemManager.isSetColorList && currentTime > 3)
             loadComplete();
+        else
+            currentTime += Time.deltaTime;
     }
 
     void NoticeView()
@@ -75,11 +77,31 @@ public class DataLoadingManager : MonoBehaviour
     {
         KudosText.text = userInfo.kudos.ToString();
         NicknameText.text = userInfo.nickname;
-        player.GetComponent<SkinnedMeshRenderer>().material.parent = userInfo.costumeColor;
+        player.GetComponent<SkinnedMeshRenderer>().material = userInfo.costumeColor.colorMaterial;
     }
 
     public void loadComplete()
     {
-        gameObject.SetActive(false);
+        loadingCanvas.SetActive(false);
+    }
+
+    public void UpdateNickname()
+    {
+        NicknameText.text = userInfo.nickname;
+        userNicknameUpdateManager.UpdateUserNickname(userInfo.nickname);
+    }
+
+    public void UpdateColorData()
+    {
+        userCostumeColorUpdateManager.UpdateUserCostumeColor(userInfo.costumeColor.colorId);
+    }
+
+    public void GetColorData(ColorCustomData colorData)
+    {
+        Debug.Log(userInfo.kudos.ToString());
+        userInfo.SetKudos(-colorData.price);
+        Debug.Log(userInfo.kudos.ToString());
+        KudosText.text = userInfo.kudos.ToString();
+        UserCostumeStatusUpdateManager.UpdateUserCostumeStatus(colorData.colorId, colorData.price);
     }
 }

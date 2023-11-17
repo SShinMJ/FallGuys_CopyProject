@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4355b3c41c247f14aa6a5781ada03d76, type: 3}
   m_Name: Purple
   m_EditorClassIdentifier: 
-  colorId: 7
+  colorId: 13
   price: 500
   colorImage: {fileID: 21300000, guid: 5047f3d331497b7469a3fc4e44b9c2c7, type: 3}
   colorMaterial: {fileID: 2100000, guid: d121489f24a00404db145690173d3124, type: 2}

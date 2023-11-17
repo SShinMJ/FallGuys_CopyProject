@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class UserInfoManager : MonoBehaviour
 {
-    public static UserInfoManager Instance;
-
     public string token { get; private set; }
     public string nickname { get; private set; }
     public int kudos { get; private set; }
-    public Material costumeColor { get; private set; }
+    public ColorCustomData costumeColor { get; private set; }
 
     [SerializeField] List<ColorCustomData> colorList = new List<ColorCustomData>();
 
@@ -19,11 +17,6 @@ public class UserInfoManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-
         var obj = FindObjectsOfType<UserInfoManager>();
 
         if (obj.Length == 1)
@@ -48,9 +41,8 @@ public class UserInfoManager : MonoBehaviour
         foreach (ColorCustomData data in colorList)
         {
             if (data.colorId == costumeColorNumber)
-                this.costumeColor = data.colorMaterial;
+                this.costumeColor = data;
         }
-        //Debug.Log(this.nickname + ", " + this.kudos + ", " + this.costumeColor.mainTexture.name);
     }
 
     public void SetUserCostumeList(List<UserCostumeStatusConnectionManager.ResultData> colorStatusList)
@@ -58,8 +50,18 @@ public class UserInfoManager : MonoBehaviour
         this.colorStatusList = colorStatusList;
     }
 
-    public void PutNickname(string nickname)
+    public void UpdateNickname(string nickname)
     {
         this.nickname = nickname;
+    }
+
+    public void UpdateColorCustomData(ColorCustomData colorData)
+    {
+        this.costumeColor = colorData;
+    }
+
+    public void SetKudos(int amount)
+    {
+        this.kudos += amount;
     }
 }
