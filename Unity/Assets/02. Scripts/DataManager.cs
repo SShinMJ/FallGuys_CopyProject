@@ -102,12 +102,4 @@ public class DataManager : MonoBehaviour
         KudosText.text = userInfo.kudos.ToString();
         UserCostumeStatusUpdateManager.UpdateUserCostumeStatus(colorData.colorId, colorData.price);
     }
-
-    // 추후 리워드씬으로 옮기기.
-    //public void UpdateKudos(int rewardAmount)
-    //{
-    //    userInfo.SetKudos(rewardAmount);
-    //    KudosText.text = userInfo.kudos.ToString();
-    //    userKudosUpdateManager.UpdateUserKudos(rewardAmount);
-    //}
 }

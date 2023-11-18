@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Common;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,9 +8,10 @@ public class UserCostumeColorUpdateManager : MonoBehaviour
 
     [SerializeField] UserInfoManager userInfo;
 
+    [System.Serializable]
     class InputData
     {
-        public long costumeColorNumber { get; set; }
+        public long costumeColorNumber;
     }
 
     private void Awake()
@@ -30,7 +30,7 @@ public class UserCostumeColorUpdateManager : MonoBehaviour
         {
             costumeColorNumber = costumeColorNumber
         };
-        string inputDataJson = JsonSerializer.ToJsonString(inputData);
+        string inputDataJson = JsonUtility.ToJson(inputData);
 
         using (UnityWebRequest www = UnityWebRequest.Put(url, inputDataJson))
         {

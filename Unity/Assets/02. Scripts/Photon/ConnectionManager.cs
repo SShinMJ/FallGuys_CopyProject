@@ -40,12 +40,16 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     public override void OnConnected()
     {
         base.OnConnected();
+
+        Debug.Log("OnConnected");
     }
 
     // 2. 마스터 서버 연결 시 호출된다.
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
+
+        Debug.Log("OnConnectedToMaster");
 
         // Conntect와 게임이 포함된 씬으로 이동
         SceneManager.LoadScene("ConnectToGameScene");

@@ -15,6 +15,9 @@ public class UserInfoManager : MonoBehaviour
     [HideInInspector] public bool isSetInfo = false;
     [HideInInspector] public bool isSetCostumeList = false;
 
+    // 나중에 게임 메니저로 빼기
+    public int gameRank { get; private set; }
+
     private void Awake()
     {
         var obj = FindObjectsOfType<UserInfoManager>();
@@ -63,5 +66,10 @@ public class UserInfoManager : MonoBehaviour
     public void SetKudos(int amount)
     {
         this.kudos += amount;
+    }
+
+    public void SetGameRank(int rank)
+    {
+        this.gameRank = rank;
     }
 }

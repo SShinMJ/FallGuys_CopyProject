@@ -1,19 +1,66 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class PlayerCurrentCostume : MonoBehaviour
+public class PlayerCurrentCostume : MonoBehaviour, IPunObservable
 {
+    // Photon
+    public PhotonView pw;
+
+    UserInfoManager userInfoManager;
+
     public int currentMaterialID;
     public GameObject currentMaterialSlot;
+    Material currentMaterial;
 
-    void Awake()
+    bool isDone = false;
+
+    private void Start()
     {
-        CurrentColor();
+        userInfoManager = FindObjectOfType<UserInfoManager>();
     }
 
-    // 웹서버에 현재 플레이어 색 정보 요청
-    void CurrentColor()
+    private void Update()
     {
-        // 임시 코드
-        currentMaterialID = 0;
+        if (gameObject.activeSelf && !isDone)
+        {
+            if (pw != null)
+            {
+                if (userInfoManager != null)
+                {
+                    if (pw.IsMine)
+                    {
+                        currentMaterial = userInfoManager.costumeColor.colorMaterial;
+                        GetComponent<SkinnedMeshRenderer>().material = currentMaterial;
+                        isDone = true;
+                    }
+                    else if(receiveMaterial != null)
+                    {
+                        GetComponent<SkinnedMeshRenderer>().material = receiveMaterial;
+                        isDone = true;
+                    }
+                }
+            }
+            else
+            {
+                if (userInfoManager != null)
+                {
+                    GetComponent<SkinnedMeshRenderer>().material = userInfoManager.costumeColor.colorMaterial;
+                    isDone = true;
+                }
+            }
+        }
+    }
+
+    Material receiveMaterial;
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentMaterial);
+        }
+        else
+        {
+            receiveMaterial = (Material)stream.ReceiveNext();
+        }
     }
 }

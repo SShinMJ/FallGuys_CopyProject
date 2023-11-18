@@ -40,10 +40,13 @@ public abstract class CharacterController : MonoBehaviour, IPunObservable
     private Vector3 _inertia;  // 관성
     [SerializeField] private LayerMask _groundMask;
 
+    CountdownController countController;
+
     protected virtual void OnEnable()
     {
         pw = GetComponent<PhotonView>();
         _animator = GetComponent<Animator>();
+        countController = FindObjectOfType<CountdownController>();
 
         // 내가 원하는 StateMachineBehaviour 데이터들을 읽어올 수 있다.(배열 리턴)
         // StateBase 스크립트가 포함된 애니메이션들이 불러와진다.
@@ -63,7 +66,7 @@ public abstract class CharacterController : MonoBehaviour, IPunObservable
     {
         if (pw.IsMine)
         {
-            if (isMovable)
+            if (countController.countdownTime < 1 && isMovable)
             {
                 move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
             }

@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Common;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -35,10 +34,11 @@ public class LoginConnectionManager : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     class LoginData
     {
-        public string userId { get; set; }
-        public string userPassword { get; set; }
+        public string userId;
+        public string userPassword;
     }
 
     [System.Serializable]
@@ -63,7 +63,7 @@ public class LoginConnectionManager : MonoBehaviour
             userId = id,
             userPassword = password
         };
-        string loginDataJson = JsonSerializer.ToJsonString(loginData);
+        string loginDataJson = JsonUtility.ToJson(loginData);
 
         using (UnityWebRequest www = UnityWebRequest.Post(url, loginDataJson, "application/json"))
         {

@@ -4,6 +4,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // 첫 입장 클라이언트는 방을 만들며 입장하고,
 // 일정 조건(1분, 10명)동안 클라이언트들의 입장(Join)을 받는다.
@@ -19,6 +20,7 @@ public class JoinManager : MonoBehaviourPunCallbacks
     [SerializeField] int maxPlayerNum = 10;
     [SerializeField] ConnectTimeCount counting;
 
+    [HideInInspector] public int headCount = 0;
     public TMP_Text headCountText;
 
     // 플레이어 오브젝트
@@ -30,6 +32,8 @@ public class JoinManager : MonoBehaviourPunCallbacks
     [SerializeField] Transform[] playerSpawnPoints;
     // 맵 오브젝트
     [SerializeField] GameObject map;
+    // 게임 UI
+    [SerializeField] GameObject gameUI;
 
     // 현재 접속한 클라이언트의 ActorNumber(고유 넘버) (아마 입장 순일듯)
     int actorNumber;
@@ -44,7 +48,8 @@ public class JoinManager : MonoBehaviourPunCallbacks
         // 현재 접속자 수 UI 텍스트로 출력
         if (headCountText != null && PhotonNetwork.CurrentRoom != null)
         {
-            headCountText.text = (PhotonNetwork.CurrentRoom.PlayerCount).ToString() + " / " + maxPlayerNum;
+            headCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            headCountText.text = headCount.ToString() + " / " + maxPlayerNum;
         }
 
         // 정원이 다 들어왔거나 제한 시간이 끝났다면,
@@ -97,10 +102,9 @@ public class JoinManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
 
         connectScene.SetActive(false);
+        gameUI.SetActive(true);
         map.SetActive(true);
         player.SetActive(true);
         Camera.main.GetComponent<CameraRoatate>().enabled = true;
-
-        //SceneManager.LoadScene("GameScene");
     }
 }

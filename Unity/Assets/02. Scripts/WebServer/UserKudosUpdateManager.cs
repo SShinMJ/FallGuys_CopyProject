@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Common;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,9 +8,10 @@ public class UserKudosUpdateManager : MonoBehaviour
 
     [SerializeField] UserInfoManager userInfo;
 
+    [System.Serializable]
     class InputData
     {
-        public int getKudos { get; set; }
+        public int getKudos;
     }
 
     private void Awake()
@@ -30,7 +30,7 @@ public class UserKudosUpdateManager : MonoBehaviour
         {
             getKudos = amount
         };
-        string inputDataJson = JsonSerializer.ToJsonString(inputData);
+        string inputDataJson = JsonUtility.ToJson(inputData);
 
         using (UnityWebRequest www = UnityWebRequest.Put(url, inputDataJson))
         {

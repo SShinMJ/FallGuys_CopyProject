@@ -1,8 +1,14 @@
-using Photon.Realtime;
 using UnityEngine;
 
 public class PlayerController : CharacterController
 {
+    [HideInInspector] public Vector3 respawnPosition;
+
+    [HideInInspector] public GameObject destination;
+    bool isGoal = false;
+
+    UserInfoManager userInfoManager;
+
     // 수직, 수평 입력 프로퍼티
     public override float horizontal 
     {
@@ -43,8 +49,16 @@ public class PlayerController : CharacterController
     float limitValue = 3.0f;
     float moveValue = 1.0f;
 
+    // 사운드 효과
+    AudioSource playerAudio;
+    [SerializeField] AudioClip jumpSFX;
+
     void Start()
     {
+        userInfoManager = FindObjectOfType<UserInfoManager>();
+        respawnPosition = transform.position;
+        playerAudio = GetComponent<AudioSource>();
+
         // 메인 카메라의 타겟을 각 클라이언트로 잡히게 한다.
         if (pw.IsMine)
         {
@@ -85,6 +99,7 @@ public class PlayerController : CharacterController
                 if (isGrounded && _animator.GetInteger("state") != (int)State.Slide)
                 {
                     ChangeState(State.Jump);
+                    playerAudio.PlayOneShot(jumpSFX);
                 }
             }
 
@@ -93,6 +108,7 @@ public class PlayerController : CharacterController
                 if(_animator.GetInteger("state") != (int)State.Slide)
                 {
                     ChangeStateForcely(State.Slide);
+                    playerAudio.PlayOneShot(jumpSFX);
                 }
             }
 
@@ -119,11 +135,33 @@ public class PlayerController : CharacterController
                 }
             }
         }
+
+        if (pw.IsMine)
+        {
+            if (UIManager.Instance.limitTime <= 0)
+            {
+                UIManager.Instance.GameOver(isGoal);
+            }
+        }
     }
 
     public void MoveValueInit()
     {
         moveValue = 1.0f;
         currentTime = 0;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (pw.IsMine)
+        {
+            if (collision.gameObject.tag == "Destination")
+            {
+                UIManager.Instance.curRank++;
+                UIManager.Instance.curRankUI.text = UIManager.Instance.curRank.ToString();
+                userInfoManager.SetGameRank(UIManager.Instance.curRank);
+                isGoal = true;
+            }
+        }
     }
 }

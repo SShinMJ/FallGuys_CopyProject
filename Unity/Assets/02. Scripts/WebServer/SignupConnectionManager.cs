@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Common;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -39,11 +38,12 @@ public class SignupConnectionManager : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     class SignupData
     {
-        public string userId { get; set; }
-        public string userPassword { get; set; }
-        public string userNickname { get; set; }
+        public string userId;
+        public string userPassword;
+        public string userNickname;
     }
 
     IEnumerator SignupPost(string id, string password, string nickname)
@@ -54,7 +54,7 @@ public class SignupConnectionManager : MonoBehaviour
             userPassword = password,
             userNickname = nickname
         };
-        string signupDataJson = JsonSerializer.ToJsonString(signupData);
+        string signupDataJson = JsonUtility.ToJson(signupData);
 
         using (UnityWebRequest www = UnityWebRequest.Post(url, signupDataJson, "application/json"))
         {
