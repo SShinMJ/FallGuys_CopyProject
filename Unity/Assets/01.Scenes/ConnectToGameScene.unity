@@ -68935,7 +68935,7 @@ Animator:
   m_GameObject: {fileID: 3889678439498471662}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 078086de319bbb84597a099ea6e06e86, type: 2}
+  m_Controller: {fileID: 9100000, guid: 618c648d541c300478d4e2f320c5ef41, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -69378,7 +69378,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 260b16061cb998d45a7f4b42019dc867, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.504
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -70294,7 +70294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d131eebbc4d59284e9512ba5f17d2162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitTime: 10
+  limitTime: 180
   textTimer: {fileID: 1267149249245145005}
   roundOver: {fileID: 3889678439498471662}
   success: {fileID: 2214705955741848572}
@@ -72905,9 +72905,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310e6baca2ca2d844a3b30ee52eadf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pw: {fileID: 0}
+  playerPhoton: {fileID: 0}
   currentMaterialID: 0
   currentMaterialSlot: {fileID: 0}
+  colorStatusList: []
 --- !u!33 &8521730160485690057
 MeshFilter:
   m_ObjectHideFlags: 0

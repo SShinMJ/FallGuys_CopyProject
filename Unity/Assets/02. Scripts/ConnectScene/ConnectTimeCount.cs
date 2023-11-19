@@ -6,7 +6,7 @@ public class ConnectTimeCount : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeCountText;
 
-    float connectTimeLimit = 10;
+    float connectTimeLimit = 60;
 
     [SerializeField] OnPhotonSerializeView photonData;
 

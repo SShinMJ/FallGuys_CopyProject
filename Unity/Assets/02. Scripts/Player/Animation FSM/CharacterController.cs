@@ -41,6 +41,16 @@ public abstract class CharacterController : MonoBehaviour, IPunObservable
     [SerializeField] private LayerMask _groundMask;
 
     CountdownController countController;
+    protected UserInfoManager userInfoManager;
+
+    public int currentMaterial;
+    public int receivedMaterial = -1;
+
+    private void Awake()
+    {
+        userInfoManager = FindObjectOfType<UserInfoManager>();
+        currentMaterial = userInfoManager.costumeColor.colorId;
+    }
 
     protected virtual void OnEnable()
     {
@@ -201,6 +211,7 @@ public abstract class CharacterController : MonoBehaviour, IPunObservable
             stream.SendNext(vertical);
             stream.SendNext(moveGain);
             stream.SendNext(_animator.GetInteger("state"));
+            stream.SendNext(currentMaterial);
         }
         else
         {
@@ -208,6 +219,7 @@ public abstract class CharacterController : MonoBehaviour, IPunObservable
             receivedV = (float)stream.ReceiveNext();
             receiveMoveGain = (float)stream.ReceiveNext();
             ChangeState((State)stream.ReceiveNext());
+            receivedMaterial = (int)stream.ReceiveNext();
         }
     }
 }

@@ -1,10 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 // 첫 입장 클라이언트는 방을 만들며 입장하고,
 // 일정 조건(1분, 10명)동안 클라이언트들의 입장(Join)을 받는다.
@@ -105,6 +102,7 @@ public class JoinManager : MonoBehaviourPunCallbacks
         gameUI.SetActive(true);
         map.SetActive(true);
         player.SetActive(true);
+        Camera.main.GetComponent<CameraRoatate>().targetPlayer = player;
         Camera.main.GetComponent<CameraRoatate>().enabled = true;
     }
 }

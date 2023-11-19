@@ -7,8 +7,6 @@ public class PlayerController : CharacterController
     [HideInInspector] public GameObject destination;
     bool isGoal = false;
 
-    UserInfoManager userInfoManager;
-
     // 수직, 수평 입력 프로퍼티
     public override float horizontal 
     {
@@ -55,7 +53,6 @@ public class PlayerController : CharacterController
 
     void Start()
     {
-        userInfoManager = FindObjectOfType<UserInfoManager>();
         respawnPosition = transform.position;
         playerAudio = GetComponent<AudioSource>();
 

@@ -405,6 +405,8 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
+  currentMaterial: 0
+  receivedMaterial: 0
   respawnPosition: {x: 0, y: 0, z: 0}
   destination: {fileID: 0}
   jumpSFX: {fileID: 8300000, guid: e403ff3f96b272647ba040e4918afda0, type: 3}
@@ -1659,9 +1661,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310e6baca2ca2d844a3b30ee52eadf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pw: {fileID: 9138670436515636347}
+  playerPhoton: {fileID: 1871271635376433081}
   currentMaterialID: 0
   currentMaterialSlot: {fileID: 0}
+  colorStatusList:
+  - {fileID: 11400000, guid: 2b1d9b6177ed7f046956b51bd6448f0b, type: 2}
+  - {fileID: 11400000, guid: bdc272b9e677c9c46adcb95b36e13d6d, type: 2}
+  - {fileID: 11400000, guid: 7842bf9d2544f60488c36b1f639ddfb0, type: 2}
+  - {fileID: 11400000, guid: ecae4c02a4c12124ebb9e96607522722, type: 2}
+  - {fileID: 11400000, guid: 864a217217db4fc45a73efc91a7db509, type: 2}
+  - {fileID: 11400000, guid: 2a7c796f179eff44dbd8803ffe91e733, type: 2}
+  - {fileID: 11400000, guid: 51fe5f7912f199f42bbc7e1bfbaa25e1, type: 2}
+  - {fileID: 11400000, guid: 760ee924d2487bb40961319e0bae2c77, type: 2}
+  - {fileID: 11400000, guid: 8a57214d298e6b24aa0dc6db13e64a9d, type: 2}
+  - {fileID: 11400000, guid: 0569e54ea59653e4d92caf92bf73e29e, type: 2}
+  - {fileID: 11400000, guid: 5efbb56c450acfa4ba3efb3fd8500ce9, type: 2}
+  - {fileID: 11400000, guid: 9450607025875e54b9ecae92dcd7677a, type: 2}
+  - {fileID: 11400000, guid: 83e0590e2ec615f4fbac3ff3574daf8e, type: 2}
+  - {fileID: 11400000, guid: 33a88b7463392c54bb5f197e4b454c92, type: 2}
+  - {fileID: 11400000, guid: 5f1db5847393bef47b361d6d72298432, type: 2}
+  - {fileID: 11400000, guid: c8456eb9c2809e64292016f8872e3e3e, type: 2}
+  - {fileID: 11400000, guid: 8fd58b9b9acda4e4cac5f5c19523ea03, type: 2}
+  - {fileID: 11400000, guid: 159ec5df4455d0245bfc38baf3cb9bd5, type: 2}
 --- !u!1 &7303786642825879768
 GameObject:
   m_ObjectHideFlags: 0

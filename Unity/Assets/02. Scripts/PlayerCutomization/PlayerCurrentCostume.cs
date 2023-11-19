@@ -1,16 +1,16 @@
-using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCurrentCostume : MonoBehaviour, IPunObservable
+public class PlayerCurrentCostume : MonoBehaviour
 {
-    // Photon
-    public PhotonView pw;
-
     UserInfoManager userInfoManager;
+
+    [SerializeField] CharacterController playerPhoton = null;
 
     public int currentMaterialID;
     public GameObject currentMaterialSlot;
-    Material currentMaterial;
+
+    public List<ColorCustomData> colorStatusList = new List<ColorCustomData>();
 
     bool isDone = false;
 
@@ -23,19 +23,18 @@ public class PlayerCurrentCostume : MonoBehaviour, IPunObservable
     {
         if (gameObject.activeSelf && !isDone)
         {
-            if (pw != null)
+            if (playerPhoton != null && playerPhoton.pw != null)
             {
                 if (userInfoManager != null)
                 {
-                    if (pw.IsMine)
+                    if (playerPhoton.pw.IsMine)
                     {
-                        currentMaterial = userInfoManager.costumeColor.colorMaterial;
-                        GetComponent<SkinnedMeshRenderer>().material = currentMaterial;
+                        GetComponent<SkinnedMeshRenderer>().material = userInfoManager.costumeColor.colorMaterial;
                         isDone = true;
                     }
-                    else if(receiveMaterial != null)
+                    else if(playerPhoton.receivedMaterial != -1 && playerPhoton.receivedMaterial != 0)
                     {
-                        GetComponent<SkinnedMeshRenderer>().material = receiveMaterial;
+                        GetComponent<SkinnedMeshRenderer>().material = FindMaterial(playerPhoton.receivedMaterial);
                         isDone = true;
                     }
                 }
@@ -51,16 +50,16 @@ public class PlayerCurrentCostume : MonoBehaviour, IPunObservable
         }
     }
 
-    Material receiveMaterial;
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    Material FindMaterial(int colorID)
     {
-        if (stream.IsWriting)
+        foreach(var color in colorStatusList)
         {
-            stream.SendNext(currentMaterial);
+            if(playerPhoton.receivedMaterial == color.colorId)
+            {
+                return color.colorMaterial;
+            }
         }
-        else
-        {
-            receiveMaterial = (Material)stream.ReceiveNext();
-        }
+
+        return colorStatusList[0].colorMaterial;
     }
 }
