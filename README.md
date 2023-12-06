@@ -10,7 +10,7 @@
 
 ## :point_right: Info
 게임 Fallguys와 똑같이 구현하였으며, Photon과 Web Server를 구현하여 네트워크를 연결하여 데이터 통신이 가능하게 개발하였습니다.
-- **팀원 :** 본인
+- **팀원 :** 개인
 - **개발기간** : 2023.10.31 ~ 2023.11.21
 - **기획의도** : 실제 서비스되고 있는 게임 Fallguys의 모작
 - **개발목표** : Unity 클라이언트와 실시간 게임 데이터 동기화를 위한 Photon Server, 클라이언트 데이터를 저장하기위한 Web Server를 구현하여 실제 ‘Fallguys’ 게임처럼 실행될 수 있도록 하였습니다.
@@ -53,11 +53,6 @@
 <br>
 
 ## :gear: Development Environment
-![image](https://github.com/SShinMJ/FallGuys_CopyProject/assets/82142527/c1350155-4dc4-48f3-acaf-af8843fa0f43)
-
-<br>
-
-##  :date: 개발 일지
-
+![image](https://github.com/SShinMJ/FallGuys_CopyProject/assets/82142527/7777d4ee-98aa-4bb6-9ee2-bb26597977ac)
 
 <br>
